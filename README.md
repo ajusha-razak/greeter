@@ -62,3 +62,4 @@ Or run test discovery across the repository:
 ```bash
 python3 -m unittest discover
 ```
+[![Run Tests](https://github.com/ajusha-razak/greeter/actions/workflows/tests.yml/badge.svg)](https://github.com/ajusha-razak/greeter/actions/workflows/tests.yml)
