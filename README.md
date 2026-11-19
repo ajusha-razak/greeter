@@ -62,3 +62,48 @@ Or run test discovery across the repository:
 ```bash
 python3 -m unittest discover
 ```
+
+## Creating and Reviewing Pull Requests with CI
+
+This project uses GitHub Actions to automatically run linting and unit tests on every pull request targeting the `main` branch.
+
+### Creating a Pull Request
+
+1. **Create a new branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make changes and verify locally**:
+   Ensure both the linter and test suite pass before pushing:
+   ```bash
+   pylint greet.py test_greet.py
+   python3 -m unittest discover
+   ```
+
+3. **Commit and push**:
+   ```bash
+   git add .
+   git commit -m "Describe your changes"
+   git push -u origin feature/your-feature-name
+   ```
+
+4. **Open a Pull Request**:
+   - Navigate to the repository on GitHub.
+   - Click **Compare & pull request**.
+   - Ensure the base branch is set to `main` and provide a clear description of the changes.
+
+### Reviewing a Pull Request with CI
+
+1. **Inspect CI Status Checks**:
+   - Once the pull request is opened, the GitHub Actions workflow (`Run Tests`) triggers automatically.
+   - A green checkmark (✔) indicates that both linting (`pylint`) and unit tests (`unittest`) passed.
+   - A red cross (✖) indicates that a check failed.
+
+2. **Investigate Failures**:
+   - If checks fail, click **Details** next to the failing job to view the console logs.
+   - Address the errors locally, commit the fixes, and push to the branch; the CI checks will re-run automatically.
+
+3. **Review and Merge**:
+   - Review code changes under the **Files changed** tab.
+   - Once all CI checks pass and the review is complete, merge the pull request into `main`.
